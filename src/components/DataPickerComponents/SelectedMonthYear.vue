@@ -1,5 +1,9 @@
 <template>
-  <div>{{ chosenMonth }}</div>
+  <div>
+    <i class="fas fa-chevron-left"></i>
+    <div>{{ chosenMonth }}</div>
+    <i class="fas fa-chevron-right"></i>
+    </div>
 </template>
 
 <script>
