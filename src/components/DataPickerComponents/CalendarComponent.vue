@@ -1,6 +1,6 @@
 <template>
   <div>
-    <SelectedMonthYear/>
+    <SelectedMonthYear :chosenDay="chosenDay"/>
     <DaysOfWeek/>
     <DaysOfMonth :datesOfDaysMonth="datesOfDaysMonth"/>
   </div>
