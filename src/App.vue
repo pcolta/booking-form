@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <BookingForm/>
+    <BookingForm :prices="298" :rating="4.5" :number-of-votes="123"/>
   </div>
 </template>
 

@@ -89,3 +89,45 @@ form {
     font-size: 14px;
   }
 }
+
+.price {
+  width: 100%;
+  font-size: 22px;
+  font-weight: 700;
+  display: flex;
+  padding-bottom: 6px;
+}
+
+.rating {
+  padding-bottom: 16px;
+  border-bottom: 1px solid #d2d1d6;
+}
+
+.number-of-votes {
+  font-size: 12px;
+  font-weight: 600;
+  padding-left: 5px;
+}
+
+.stars {
+  position: relative;
+  display: inline-block;
+  font-size: 13pt;
+  height: 1em;
+  line-height: 1em;
+}
+
+.stars:before {
+  content: '\2605\2605\2605\2605\2605';
+  color: lightgray;
+  z-index: -1;
+}
+
+.stars:after {
+  content: '\2605\2605\2605\2605\2605';
+  position: absolute;
+  left: 0;
+  overflow: hidden;
+  width: var(--w, 0%);
+  color: darkcyan;
+}
