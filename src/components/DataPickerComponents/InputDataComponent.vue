@@ -2,9 +2,9 @@
   <div class="input-date-component">
     <span class="dates">Dates</span>
     <div class="input-wrapper">
-      <input @click="onShow('checkIn')" placeholder="Check In" v-model="dayCheckIn"/>
+      <input @click="onShow('checkIn')" placeholder="Check In" v-model="dayCheckIn" required/>
       <i class="fas fa-arrow-right"></i>
-      <input @click="onShow('checkOut')" placeholder="Check Out" v-model="dayCheckOut"/>
+      <input @click="onShow('checkOut')" placeholder="Check Out" v-model="dayCheckOut" required/>
     </div>
   </div>
 </template>
