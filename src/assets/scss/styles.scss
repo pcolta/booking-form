@@ -220,3 +220,21 @@ form {
     width: 10%;
   }
 }
+
+.submit-form {
+  background-color: #da625e;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  color: #ffffff;
+  margin-top: 20px;
+  float: right;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.submit-form:hover {
+  transform: scale(1.1, 1.1);
+  -webkit-transform: scale(1.1, 1.1);
+  -moz-transform: scale(1.1, 1.1);
+}

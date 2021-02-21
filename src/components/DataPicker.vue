@@ -4,6 +4,7 @@
     <div v-if="show">
       <CalendarComponent @selectDate="onSelectDate" :dateCheckIn="dayCheckIn" :dateCheckOut="dayCheckOut" :unavailable-dates="unavailableDates"/>
     </div>
+    <button @click="onSubmit" class="submit-form">Wyślij formularz</button>
   </div>
 </template>
 
@@ -54,6 +55,10 @@ export default {
       } else {
         this.dayCheckOut = newValue;
       }
+    },
+
+    onSubmit() {
+      this.$emit('submit', {showCheckIn: this.showCheckIn, dayCheckOut: this.dayCheckOut})
     }
   }
 }
