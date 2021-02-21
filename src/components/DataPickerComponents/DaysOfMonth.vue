@@ -1,6 +1,6 @@
 <template>
   <ul class="days-of-month">
-    <li class="day" v-for="day in datesOfDaysMonth" :key="day.date">{{ dayFormat(day.date) }}</li>
+    <li :class="day.isCurrentMonth === true ? 'isCurrentMonth' : ''" v-for="day in datesOfDaysMonth" :key="day.date">{{ dayFormat(day.date) }}</li>
   </ul>
 </template>
 
