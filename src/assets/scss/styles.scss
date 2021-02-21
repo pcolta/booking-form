@@ -1,4 +1,5 @@
 $grey: #d2d1d6;
+$greyLight: #ececec;
 
 #app {
   font-family: Montserrat, sans-serif;
@@ -130,4 +131,41 @@ form {
   overflow: hidden;
   width: var(--w, 0%);
   color: darkcyan;
+}
+
+.dates {
+  font-size: 12px;
+  font-weight: 600;
+  width: 100%;
+  display: flex;
+  padding-top: 16px;
+  padding-bottom: 3px;
+}
+
+.input-date-component {
+  .input-wrapper {
+    border: 1px solid $grey;
+    padding: 8px;
+  }
+
+  input {
+    width: 42%;
+    border: none;
+    background-color: $greyLight;
+    height: 24px;
+    font-size: 18px;
+    color: #7b7b7b;
+    border-radius: 5px;
+  }
+
+  input:focus {
+    background-color: #9edad7;
+    border: none;
+    color: #579396;
+  }
+
+  .fa-arrow-right {
+    font-weight: 100;
+    width: 10%;
+  }
 }

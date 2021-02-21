@@ -1,6 +1,11 @@
 <template>
-  <div>
-    <input @click="onShow"/><input @click="onShow"/>
+  <div class="input-date-component">
+    <span class="dates">Dates</span>
+    <div class="input-wrapper">
+      <input @click="onShow"/>
+      <i class="fas fa-arrow-right"></i>
+      <input @click="onShow"/>
+    </div>
   </div>
 </template>
 
