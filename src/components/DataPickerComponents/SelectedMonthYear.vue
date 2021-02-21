@@ -17,7 +17,7 @@ export default {
   name: "SelectedMonthYear",
 
   props: {
-    monthWithYear: Object
+    monthWithYear: String
   },
 
   computed: {

@@ -3,7 +3,7 @@
     <SelectedMonthYear :monthWithYear="currentMonth" @selectMonth="onSelectedMonth"/>
     <div class="calendar-month">
       <DaysOfWeek/>
-      <DaysOfMonth :datesOfDaysMonth="calendarDays"/>
+      <DaysOfMonth :datesOfDaysMonth="calendarDays" @selectDay="onSelectDay" :dateCheckIn="dateCheckIn" :dateCheckOut="dateCheckOut"/>
     </div>
   </div>
 </template>
@@ -18,6 +18,8 @@ export default {
   name: "CalendarComponent",
 
   components: {SelectedMonthYear, DaysOfMonth, DaysOfWeek},
+
+  props: ['dateCheckIn', 'dateCheckOut'],
 
   data() {
     return {
@@ -80,6 +82,10 @@ export default {
   methods: {
     onSelectedMonth(newChosenMonth) {
       this.currentMonth = moment(newChosenMonth);
+    },
+
+    onSelectDay(day) {
+      this.$emit('selectDate', moment(day).format("YYYY-MM-DD"))
     }
   }
 

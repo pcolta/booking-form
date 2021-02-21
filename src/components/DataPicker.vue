@@ -1,8 +1,8 @@
 <template>
   <div>
-    <InputDataComponent @show="onShow"/>
+    <InputDataComponent @show="onShow" :dateCheckIn="dayCheckIn" :dateCheckOut="dayCheckOut"/>
     <div v-if="show">
-      <CalendarComponent />
+      <CalendarComponent @selectDate="onSelectDate" :dateCheckIn="dayCheckIn" :dateCheckOut="dayCheckOut"/>
     </div>
   </div>
 </template>
@@ -24,13 +24,36 @@ export default {
 
   data() {
     return {
-      show: false
+      show: false,
+      showCheckIn: false,
+      showCheckOut: false,
+      dayCheckIn: '',
+      dayCheckOut: ''
     }
   },
 
   methods: {
-    onShow() {
+    onShow(inputElement) {
       this.show = !this.show;
+      if (this.show === false) {
+        this.showCheckIn = false;
+        this.showCheckIn = false;
+      }
+      if (inputElement === 'checkIn') {
+        this.showCheckIn = true;
+        this.showCheckOut = false;
+      } else {
+        this.showCheckIn = false;
+        this.showCheckOut = true;
+      }
+    },
+
+    onSelectDate(newValue) {
+      if(this.showCheckIn === true) {
+        this.dayCheckIn = newValue;
+      } else {
+        this.dayCheckOut = newValue;
+      }
     }
   }
 }
