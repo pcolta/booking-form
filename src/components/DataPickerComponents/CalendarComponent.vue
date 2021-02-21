@@ -3,7 +3,7 @@
     <SelectedMonthYear :monthWithYear="currentMonth" @selectMonth="onSelectedMonth"/>
     <div class="calendar-month">
       <DaysOfWeek/>
-      <DaysOfMonth :datesOfDaysMonth="calendarDays" @selectDay="onSelectDay" :dateCheckIn="dateCheckIn" :dateCheckOut="dateCheckOut" :today="today"/>
+      <DaysOfMonth :datesOfDaysMonth="calendarDays" @selectDay="onSelectDay" :dateCheckIn="dateCheckIn" :dateCheckOut="dateCheckOut" :today="today" :unavailable-dates="unavailableDates"/>
     </div>
   </div>
 </template>
@@ -19,7 +19,7 @@ export default {
 
   components: {SelectedMonthYear, DaysOfMonth, DaysOfWeek},
 
-  props: ['dateCheckIn', 'dateCheckOut'],
+  props: ['dateCheckIn', 'dateCheckOut', 'unavailableDates'],
 
   data() {
     return {

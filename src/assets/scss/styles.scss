@@ -87,6 +87,13 @@ form {
     color: $grey;
     padding: 20px 13px;
     font-size: 14px;
+    cursor: pointer;
+  }
+
+  li:hover {
+    transform: scale(1.2, 1.2);
+    -webkit-transform: scale(1.2, 1.2);
+    -moz-transform: scale(1.2, 1.2);
   }
 
   .isCurrentMonth {
@@ -106,6 +113,19 @@ form {
     color: $green;
     padding: 27% 40%;
   }
+
+  .disabled {
+    opacity: .65;
+    user-select: none;
+    pointer-events: none;
+  }
+    .disabled:hover {
+      transform: none;
+      -webkit-transform: none;
+      -moz-transform: none;
+    }
+
+
 }
 
 .price {

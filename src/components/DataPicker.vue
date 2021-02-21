@@ -2,7 +2,7 @@
   <div>
     <InputDataComponent @show="onShow" :dateCheckIn="dayCheckIn" :dateCheckOut="dayCheckOut"/>
     <div v-if="show">
-      <CalendarComponent @selectDate="onSelectDate" :dateCheckIn="dayCheckIn" :dateCheckOut="dayCheckOut"/>
+      <CalendarComponent @selectDate="onSelectDate" :dateCheckIn="dayCheckIn" :dateCheckOut="dayCheckOut" :unavailable-dates="unavailableDates"/>
     </div>
   </div>
 </template>

@@ -1,6 +1,7 @@
 <template>
   <ul class="days-of-month">
-    <li :class="day.isCurrentMonth === true ? 'isCurrentMonth' : ''" v-for="day in datesOfDaysMonth" :key="String(day.date)" @click="selectDay(day.date)"><span :class="classOfDay(day)">{{ dayFormat(day.date) }}</span></li>
+    <li :class="isCurrentDayOrUnavailable(day)" v-for="day in datesOfDaysMonth" :key="String(day.date)"
+        @click="selectDay(day.date)"><span :class="classOfDay(day)">{{ dayFormat(day.date) }}</span></li>
   </ul>
 </template>
 
@@ -14,7 +15,8 @@ export default {
     datesOfDaysMonth: Array,
     dateCheckIn: String,
     dateCheckOut: String,
-    today: String
+    today: String,
+    unavailableDates: Array
   },
 
   methods: {
@@ -23,17 +25,28 @@ export default {
     },
 
     selectDay(day) {
-      this.$emit('selectDay', day)
+      if (!this.unavailableDates.includes(moment(day.date).format(("YYYY-MM-DD")))) {
+        this.$emit('selectDay', day)
+      }
     },
 
     classOfDay(day) {
-      if(moment(day.date).format("YYYY-MM-DD") === this.dateCheckIn || moment(day.date).format("YYYY-MM-DD") === this.dateCheckOut) {
+      if (moment(day.date).format("YYYY-MM-DD") === this.dateCheckIn || moment(day.date).format("YYYY-MM-DD") === this.dateCheckOut) {
         return "checkDay";
-      } else {
-        if(moment(day.date).format("YYYY-MM-DD") === this.today) {
-          return "today"
-        }
       }
+      if (moment(day.date).format("YYYY-MM-DD") === this.today) {
+        return "today"
+      }
+    },
+
+    isCurrentDayOrUnavailable(day) {
+      if (day.isCurrentMonth === false) {
+        return ''
+      }
+      if (this.unavailableDates.includes(moment(day.date).format(("YYYY-MM-DD")))) {
+        return "disabled"
+      }
+      return "isCurrentMonth"
     }
   }
 }
