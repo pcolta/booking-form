@@ -1,8 +1,10 @@
 <template>
-  <div>
-    <SelectedMonthYear :chosenDay="chosenDay"/>
-    <DaysOfWeek/>
-    <DaysOfMonth :datesOfDaysMonth="datesOfDaysMonth"/>
+  <div class="calendar">
+    <SelectedMonthYear :chosenDay="chosenDay" @select-day="onSelectedDay"/>
+    <div class="calendar-month">
+      <DaysOfWeek/>
+      <DaysOfMonth :datesOfDaysMonth="datesOfDaysMonth"/>
+    </div>
   </div>
 </template>
 
@@ -48,7 +50,13 @@ export default {
         })
       }
       return monthDays
-    },
+    }
+  },
+
+  methods: {
+    onSelectedDay(newChosenDay) {
+      this.chosenDay = newChosenDay;
+    }
   }
 
 }

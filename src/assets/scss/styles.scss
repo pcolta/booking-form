@@ -1,0 +1,91 @@
+$grey: #d2d1d6;
+
+#app {
+  font-family: Montserrat, sans-serif;
+  background-color: #ececec;
+  width: 440px;
+  padding: 10px;
+  height: 520px;
+}
+
+form {
+  padding: 25px;
+}
+
+.booking-form {
+  border: 1px solid $grey;
+  height: 500px;
+}
+
+.calendar {
+  width: 370px;
+  height: 370px;
+  z-index: 2;
+  border: 1px solid #d2d1d6;
+  background-color: #ffffff;
+  margin-top: 5px;
+
+  ul {
+    list-style-type: none;
+  }
+}
+
+.month-year {
+  color: #ffffff;
+  text-align: center;
+  padding: 15px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.fa-chevron-left {
+  padding: 19px;
+  margin-left: 0;
+  margin-right: auto;
+}
+
+.fa-chevron-right {
+  padding: 19px;
+  margin-left: auto;
+  margin-right: 0;
+}
+
+.calendar-month {
+  padding: 17px;
+}
+
+.selected-month-year {
+  background-color: #00dbb1;
+  height: 60px;
+  font-size: 22px;
+  font-weight: 700;
+  display: flex;
+  padding: 0 5px;
+}
+
+.days-of-week {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  padding: 0;
+  margin: 5px 0 10px 0;
+
+  li {
+    padding: 10px;
+    font-size: 14px;
+    color: #d2d1d6;
+  }
+}
+
+.days-of-month {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  padding: 0;
+  margin: 0;
+
+  li {
+    text-align: center;
+    color: #918b9a;
+    padding: 20px 13px;
+    font-size: 14px;
+  }
+}

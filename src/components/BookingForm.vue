@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="booking-form">
     <form>
       <RatingWidget :price="prices" :number-of-votes="numberOfVotes" :rating="rating"/>
       <DataPicker :available-dates="availableDates" :unavailable-dates="unavailableDates" :selected-dates="selectedDates"/>
