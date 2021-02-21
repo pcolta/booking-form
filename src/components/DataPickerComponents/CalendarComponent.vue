@@ -3,7 +3,7 @@
     <SelectedMonthYear :monthWithYear="currentMonth" @selectMonth="onSelectedMonth"/>
     <div class="calendar-month">
       <DaysOfWeek/>
-      <DaysOfMonth :datesOfDaysMonth="calendarDays" @selectDay="onSelectDay" :dateCheckIn="dateCheckIn" :dateCheckOut="dateCheckOut"/>
+      <DaysOfMonth :datesOfDaysMonth="calendarDays" @selectDay="onSelectDay" :dateCheckIn="dateCheckIn" :dateCheckOut="dateCheckOut" :today="today"/>
     </div>
   </div>
 </template>
@@ -28,6 +28,10 @@ export default {
   },
 
   computed: {
+    today() {
+      return moment().format("YYYY-MM-DD")
+    },
+
     firstDayOfMonth() {
       return moment(this.currentMonth).startOf('month')
     },

@@ -13,7 +13,8 @@ export default {
   props: {
     datesOfDaysMonth: Array,
     dateCheckIn: String,
-    dateCheckOut: String
+    dateCheckOut: String,
+    today: String
   },
 
   methods: {
@@ -28,6 +29,10 @@ export default {
     classOfDay(day) {
       if(moment(day.date).format("YYYY-MM-DD") === this.dateCheckIn || moment(day.date).format("YYYY-MM-DD") === this.dateCheckOut) {
         return "checkDay";
+      } else {
+        if(moment(day.date).format("YYYY-MM-DD") === this.today) {
+          return "today"
+        }
       }
     }
   }

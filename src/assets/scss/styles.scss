@@ -99,6 +99,13 @@ form {
     border-radius: 50%;
     padding: 27% 40%;
   }
+
+  .today {
+    border: 3px solid $green;
+    border-radius: 50%;
+    color: $green;
+    padding: 27% 40%;
+  }
 }
 
 .price {
