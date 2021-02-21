@@ -1,9 +1,9 @@
 <template>
   <div class="calendar">
-    <SelectedMonthYear :chosenDay="chosenDay" @select-day="onSelectedDay"/>
+    <SelectedMonthYear :monthWithYear="currentMonth" @selectMonth="onSelectedMonth"/>
     <div class="calendar-month">
       <DaysOfWeek/>
-      <DaysOfMonth :datesOfDaysMonth="datesOfDaysMonth"/>
+      <DaysOfMonth :datesOfDaysMonth="calendarDays"/>
     </div>
   </div>
 </template>
@@ -21,41 +21,65 @@ export default {
 
   data() {
     return {
-      chosenDay: moment()
+      currentMonth: moment().format("MMMM YYYY")
     }
   },
 
   computed: {
-    today() {
-      return this.chosenDay.format("DD-MM-YYYY");
+    firstDayOfMonth() {
+      return moment(this.currentMonth).startOf('month')
     },
 
-    month() {
-      return this.chosenDay.format("M");
+    calendarDays() {
+      return [...this.previousMonthsDays, ...this.currentMonthsDays, ...this.nextMonthDays]
     },
 
-    year() {
-      return this.chosenDay.format("YYYY");
+    previousMonthsDays() {
+      let firstWeekdayOfCurrentMonth = this.firstDayOfMonth.isoWeekday() % 7
+      let previousMonthDays = []
+      if (firstWeekdayOfCurrentMonth !== 0) {
+
+        for (let i = 1; i <= firstWeekdayOfCurrentMonth; i++) {
+          previousMonthDays.unshift({
+            date: moment(this.firstDayOfMonth).subtract(i, 'days'),
+            isCurrentMonth: false
+          })
+        }
+      }
+      return previousMonthDays
     },
 
-    countDaysInMonth() {
-      return this.chosenDay.daysInMonth();
-    },
-
-    datesOfDaysMonth() {
-      let monthDays = []
-      for (let i = 1; i < Number(this.countDaysInMonth); i++) {
-        monthDays.push({
-          date: moment(`${this.year}-${this.month}-${i}`).format("DD-MM-YYYY")
+    currentMonthsDays() {
+      let currentMonthDays = []
+      for (let i = 0; i < moment(this.currentMonth).daysInMonth(); i++) {
+        currentMonthDays.push({
+          date: moment(this.firstDayOfMonth).add(i, 'days'),
+          isCurrentMonth: true
         })
       }
-      return monthDays
+      return currentMonthDays
+    },
+
+    nextMonthDays() {
+      let nextMonthDays = []
+      let lastDayOfMonth = moment(this.currentMonth).endOf('month')
+      let lastWeekdayOfCurrentMonth = lastDayOfMonth.isoWeekday() % 7
+      if (lastWeekdayOfCurrentMonth !== 6) {
+
+        for (let i = 0; i < 6 - lastWeekdayOfCurrentMonth; i++) {
+          nextMonthDays.push({
+            date: moment(lastDayOfMonth).add(i, 'days'),
+            isCurrentMonth: false
+          })
+        }
+      }
+      return nextMonthDays
     }
   },
 
   methods: {
-    onSelectedDay(newChosenDay) {
-      this.chosenDay = newChosenDay;
+    onSelectedMonth(newChosenMonth) {
+      this.currentMonth = moment(newChosenMonth);
     }
   }
 
