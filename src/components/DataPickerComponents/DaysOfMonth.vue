@@ -40,6 +40,16 @@ export default {
     },
 
     isCurrentDayOrUnavailable(day) {
+      if (this.checkedDays(day) === true) {
+        if (moment(day.date).format("YYYY-MM-DD") === this.dateCheckIn) {
+          return "isChecked checkIn";
+        }
+        if (moment(day.date).format("YYYY-MM-DD") === this.dateCheckOut) {
+          return "isChecked checkOut";
+        } else {
+          return "isChecked";
+        }
+      }
       if (day.isCurrentMonth === false) {
         return ''
       }
@@ -47,6 +57,14 @@ export default {
         return "disabled"
       }
       return "isCurrentMonth"
+    },
+
+    checkedDays(day) {
+      if (this.dateCheckIn && this.dateCheckOut && this.dateCheckIn < this.dateCheckOut) {
+        if (this.dateCheckIn <= moment(day.date).format("YYYY-MM-DD") && moment(day.date).format("YYYY-MM-DD") <= this.dateCheckOut)
+          return true
+      }
+      return false
     }
   }
 }

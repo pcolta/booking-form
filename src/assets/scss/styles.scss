@@ -85,12 +85,13 @@ form {
   li {
     text-align: center;
     color: $grey;
-    padding: 20px 13px;
+    margin: 5px 0;
+    padding: 12px 0;
     font-size: 14px;
     cursor: pointer;
   }
 
-  li:hover {
+  span:hover {
     transform: scale(1.2, 1.2);
     -webkit-transform: scale(1.2, 1.2);
     -moz-transform: scale(1.2, 1.2);
@@ -104,14 +105,14 @@ form {
     background-color: $green;
     color: #ffffff;
     border-radius: 50%;
-    padding: 27% 40%;
+    padding: 13px;
   }
 
   .today {
     border: 3px solid $green;
     border-radius: 50%;
     color: $green;
-    padding: 27% 40%;
+    padding: 9px;
   }
 
   .disabled {
@@ -119,13 +120,26 @@ form {
     user-select: none;
     pointer-events: none;
   }
-    .disabled:hover {
-      transform: none;
-      -webkit-transform: none;
-      -moz-transform: none;
-    }
 
+  .disabled:hover {
+    transform: none;
+    -webkit-transform: none;
+    -moz-transform: none;
+  }
 
+  .isChecked {
+    background-color: rgba(0, 219, 177, 0.2);
+    color: $green;
+  }
+  .checkIn {
+    border-top-left-radius: 50%;
+    border-bottom-left-radius:50%;
+  }
+
+  .checkOut {
+    border-top-right-radius: 50%;
+    border-bottom-right-radius: 50%;
+  }
 }
 
 .price {
