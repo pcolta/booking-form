@@ -1,6 +1,6 @@
 <template>
   <div>
-    <InputDataComponent @show="onShow" :dateCheckIn="dayCheckIn" :dateCheckOut="dayCheckOut"/>
+    <InputDataComponent @show="onShow" :dateCheckIn="dayCheckIn" :dateCheckOut="dayCheckOut" @selectDate="onSelectDate"/>
     <div v-if="show">
       <CalendarComponent @selectDate="onSelectDate" :dateCheckIn="dayCheckIn" :dateCheckOut="dayCheckOut" :unavailable-dates="unavailableDates"/>
     </div>
