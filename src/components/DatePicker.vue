@@ -9,8 +9,8 @@
 </template>
 
 <script>
-import InputDataComponent from "@/components/DataPickerComponents/InputDataComponent";
-import CalendarComponent from "@/components/DataPickerComponents/CalendarComponent";
+import InputDataComponent from "@/components/DatePicker/InputData";
+import CalendarComponent from "@/components/DatePicker/Calendar";
 
 export default {
   name: "DataPicker",

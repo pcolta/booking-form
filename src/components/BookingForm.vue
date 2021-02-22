@@ -9,7 +9,7 @@
 
 <script>
 import RatingWidget from "@/components/RatingWidget";
-import DataPicker from "@/components/DataPicker";
+import DataPicker from "@/components/DatePicker";
 
 export default {
   name: "BookingForm",
