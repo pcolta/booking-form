@@ -22,18 +22,18 @@ export default {
 
   computed: {
     formattedMonthWithYear() {
-      return moment(this.monthWithYear).format("MMMM YYYY")
+      return moment(this.monthWithYear, "MMMM YYYY").format("MMMM YYYY")
     }
   },
 
   methods: {
     previousMonth() {
-      let newSelectedDate = moment(this.monthWithYear).subtract(1, "months").format("MMMM YYYY");
+      let newSelectedDate = moment(this.monthWithYear, "MMMM YYYY").subtract(1, "months").format("MMMM YYYY");
       this.$emit("selectMonth", newSelectedDate);
     },
 
     nextMonth() {
-      let newSelectedDate = moment(this.monthWithYear).add(1, "months").format("MMMM YYYY");
+      let newSelectedDate = moment(this.monthWithYear, "MMMM YYYY").add(1, "months").format("MMMM YYYY");
       this.$emit("selectMonth", newSelectedDate);
     }
   }

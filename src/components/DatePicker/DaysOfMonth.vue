@@ -1,6 +1,6 @@
 <template>
   <ul class="days-of-month">
-    <li :class="isCurrentDayOrUnavailable(day)" v-for="day in datesOfDaysMonth" :key="String(day.date)"
+    <li v-for="day in datesOfDaysMonth" :key="String(day.date)" :class="isCurrentDayOrUnavailable(day)"
         @click="selectDay(day.date)"><span :class="classOfDay(day)">{{ dayFormat(day.date) }}</span></li>
   </ul>
 </template>

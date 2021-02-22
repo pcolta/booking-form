@@ -3,16 +3,17 @@
     <SelectedMonthYear :monthWithYear="currentMonth" @selectMonth="onSelectedMonth"/>
     <div class="calendar-month">
       <DaysOfWeek/>
-      <DaysOfMonth :datesOfDaysMonth="calendarDays" @selectDay="onSelectDay" :dateCheckIn="dateCheckIn" :dateCheckOut="dateCheckOut" :today="today" :unavailable-dates="unavailableDates"/>
+      <DaysOfMonth :dateCheckIn="dateCheckIn" :dateCheckOut="dateCheckOut" :datesOfDaysMonth="calendarDays"
+                   :today="today" :unavailable-dates="unavailableDates" @selectDay="onSelectDay"/>
     </div>
   </div>
 </template>
 
 <script>
 import moment from 'moment'
-import DaysOfWeek from "@/components/DataPickerComponents/DaysOfWeek";
-import DaysOfMonth from "@/components/DataPickerComponents/DaysOfMonth";
-import SelectedMonthYear from "@/components/DataPickerComponents/SelectedMonthYear";
+import DaysOfWeek from "@/components/DatePicker/DaysOfWeek";
+import DaysOfMonth from "@/components/DatePicker/DaysOfMonth";
+import SelectedMonthYear from "@/components/DatePicker/SelectedMonthYear";
 
 export default {
   name: "CalendarComponent",
@@ -33,7 +34,7 @@ export default {
     },
 
     firstDayOfMonth() {
-      return moment(this.currentMonth).startOf('month')
+      return moment(this.currentMonth, "MMMM YYYY").startOf('month')
     },
 
     calendarDays() {
@@ -57,7 +58,7 @@ export default {
 
     currentMonthsDays() {
       let currentMonthDays = []
-      for (let i = 0; i < moment(this.currentMonth).daysInMonth(); i++) {
+      for (let i = 0; i < moment(this.currentMonth, "MMMM YYYY").daysInMonth(); i++) {
         currentMonthDays.push({
           date: moment(this.firstDayOfMonth).add(i, 'days'),
           isCurrentMonth: true
@@ -68,7 +69,7 @@ export default {
 
     nextMonthDays() {
       let nextMonthDays = []
-      let lastDayOfMonth = moment(this.currentMonth).endOf('month')
+      let lastDayOfMonth = moment(this.currentMonth, "MMMM YYYY").endOf('month')
       let lastWeekdayOfCurrentMonth = lastDayOfMonth.isoWeekday() % 7
       if (lastWeekdayOfCurrentMonth !== 6) {
 
